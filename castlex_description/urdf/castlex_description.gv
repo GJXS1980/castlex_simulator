@@ -1,0 +1,95 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"chassis_link" [label="chassis_link"];
+"Anti_collision_sensor_link" [label="Anti_collision_sensor_link"];
+"Anti_drop_sensor_link" [label="Anti_drop_sensor_link"];
+"Anti_drop_sensor_a_link" [label="Anti_drop_sensor_a_link"];
+"Anti_drop_sensor_b_link" [label="Anti_drop_sensor_b_link"];
+"Anti_drop_sensor_c_link" [label="Anti_drop_sensor_c_link"];
+"axle_link" [label="axle_link"];
+"car_a_whell_shaft_link" [label="car_a_whell_shaft_link"];
+"car_a_whell_disc_link" [label="car_a_whell_disc_link"];
+"car_a_whell_link" [label="car_a_whell_link"];
+"car_b_whell_shaft_link" [label="car_b_whell_shaft_link"];
+"car_b_whell_disc_link" [label="car_b_whell_disc_link"];
+"car_b_whell_link" [label="car_b_whell_link"];
+"car_c_whell_shaft_link" [label="car_c_whell_shaft_link"];
+"car_c_whell_disc_link" [label="car_c_whell_disc_link"];
+"car_c_whell_link" [label="car_c_whell_link"];
+"cover_link" [label="cover_link"];
+"imu_link" [label="imu_link"];
+"lidar_link" [label="lidar_link"];
+"side_cover_link" [label="side_cover_link"];
+"top_link" [label="top_link"];
+"arm_link" [label="arm_link"];
+"column_link" [label="column_link"];
+"3d_camera_link" [label="3d_camera_link"];
+"display_link" [label="display_link"];
+"microphone_link" [label="microphone_link"];
+"stop_link" [label="stop_link"];
+"ultrasonic_link" [label="ultrasonic_link"];
+"left_ultrasonic_link" [label="left_ultrasonic_link"];
+"right_ultrasonic_link" [label="right_ultrasonic_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_link_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_link_joint" -> "chassis_link"
+"chassis_link" -> "Anti_collision_sensor_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 3.14159"]
+"Anti_collision_sensor_joint" -> "Anti_collision_sensor_link"
+"chassis_link" -> "Anti_drop_sensor_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 3.14159"]
+"Anti_drop_sensor_joint" -> "Anti_drop_sensor_link"
+"Anti_drop_sensor_link" -> "Anti_drop_sensor_a_joint" [label="xyz: -0.159 0 0 \nrpy: -1.5708 0 0"]
+"Anti_drop_sensor_a_joint" -> "Anti_drop_sensor_a_link"
+"Anti_drop_sensor_link" -> "Anti_drop_sensor_b_joint" [label="xyz: 0.0795 0 0.137698 \nrpy: 1.5708 1.0472 3.14159"]
+"Anti_drop_sensor_b_joint" -> "Anti_drop_sensor_b_link"
+"Anti_drop_sensor_link" -> "Anti_drop_sensor_c_joint" [label="xyz: 0.0795 0 -0.137698 \nrpy: 1.5708 -1.0472 3.14159"]
+"Anti_drop_sensor_c_joint" -> "Anti_drop_sensor_c_link"
+"chassis_link" -> "axle_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 3.14159"]
+"axle_joint" -> "axle_link"
+"axle_link" -> "car_a_whell_shaft_joint" [label="xyz: -0.079983 0.023 0.13854 \nrpy: 1.0472 -5.55112e-17 1.5708"]
+"car_a_whell_shaft_joint" -> "car_a_whell_shaft_link"
+"car_a_whell_shaft_link" -> "car_a_whell_disc_joint" [label="xyz: 0 0.00123301 0 \nrpy: 1.5708 -0.0218661 0"]
+"car_a_whell_disc_joint" -> "car_a_whell_disc_link"
+"car_a_whell_disc_link" -> "car_a_whell_joint" [label="xyz: 0.0385363 0.022249 0.0037 \nrpy: -1.5708 1.19004 0.523599"]
+"car_a_whell_joint" -> "car_a_whell_link"
+"axle_link" -> "car_b_whell_shaft_joint" [label="xyz: -0.080175 0.02375 -0.13973 \nrpy: -1.5708 0.5236 6.40988e-17"]
+"car_b_whell_shaft_joint" -> "car_b_whell_shaft_link"
+"car_b_whell_shaft_link" -> "car_b_whell_disc_joint" [label="xyz: -0.000433013 -0.0204 -0.00075 \nrpy: -1.5708 -0.501733 -3.14159"]
+"car_b_whell_disc_joint" -> "car_b_whell_disc_link"
+"car_b_whell_disc_link" -> "car_b_whell_joint" [label="xyz: -0.0152192 -0.0418143 -0.0168 \nrpy: -1.5708 1.19004 -1.91986"]
+"car_b_whell_joint" -> "car_b_whell_link"
+"axle_link" -> "car_c_whell_shaft_joint" [label="xyz: 0.15997 0.023 0 \nrpy: 0 0 -1.5708"]
+"car_c_whell_shaft_joint" -> "car_c_whell_shaft_link"
+"car_c_whell_shaft_link" -> "car_c_whell_disc_joint" [label="xyz: 0 0.00123301 0 \nrpy: -1.5708 0.0218661 -3.14159"]
+"car_c_whell_disc_joint" -> "car_c_whell_disc_link"
+"car_c_whell_disc_link" -> "car_c_whell_joint" [label="xyz: 0 -0.0444979 0.0037 \nrpy: -1.5708 1.19004 -1.5708"]
+"car_c_whell_joint" -> "car_c_whell_link"
+"chassis_link" -> "cover_link_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 3.14159"]
+"cover_link_joint" -> "cover_link"
+"chassis_link" -> "imu_joint" [label="xyz: -0.0593785 0.0187236 0.07 \nrpy: 3.14159 -0 3.14159"]
+"imu_joint" -> "imu_link"
+"chassis_link" -> "lidar_joint" [label="xyz: 0.13125 0 0.135 \nrpy: 3.14159 3.23109e-15 -3.23109e-15"]
+"lidar_joint" -> "lidar_link"
+"chassis_link" -> "side_cover_joint" [label="xyz: -0.07 -0.172 0.005 \nrpy: 0.00367645 -0 3.14159"]
+"side_cover_joint" -> "side_cover_link"
+"chassis_link" -> "top_joint" [label="xyz: 0 0 0.163 \nrpy: 1.5708 -0 3.14159"]
+"top_joint" -> "top_link"
+"top_link" -> "arm_joint" [label="xyz: -0.082 0.008 0 \nrpy: 0 -0 0"]
+"arm_joint" -> "arm_link"
+"top_link" -> "column_joint" [label="xyz: 0.067 0.008 0 \nrpy: 3.14159 -0.0083471 3.14159"]
+"column_joint" -> "column_link"
+"column_link" -> "3d_camera_joint" [label="xyz: 0 0.398403 0 \nrpy: 1.5708 1.55905 -3.14159"]
+"3d_camera_joint" -> "3d_camera_link"
+"column_link" -> "diasply_joint" [label="xyz: 0 0.135126 0 \nrpy: 0.00721623 0.015388 -0.0161356"]
+"diasply_joint" -> "display_link"
+"column_link" -> "microphone_joint" [label="xyz: 0 0.49022 0 \nrpy: 3.14159 1.42595 3.14159"]
+"microphone_joint" -> "microphone_link"
+"top_link" -> "stop_joint" [label="xyz: 0.112 0 -0.112 \nrpy: 0 -0 0"]
+"stop_joint" -> "stop_link"
+"chassis_link" -> "ultrasonic_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 3.14159"]
+"ultrasonic_joint" -> "ultrasonic_link"
+"ultrasonic_link" -> "left_ultrasonic_joint" [label="xyz: -0.1442 0.06176 -0.07 \nrpy: 0 1.5708 -0"]
+"left_ultrasonic_joint" -> "left_ultrasonic_link"
+"ultrasonic_link" -> "right_ultrasonic_joint" [label="xyz: -0.1447 0.06176 0.07 \nrpy: 0 1.5708 -0"]
+"right_ultrasonic_joint" -> "right_ultrasonic_link"
+}

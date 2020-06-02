@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.0-0-g9aa0fdb  Build Version: 1.5.7004.21443
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot  name="castlex_description">
+
+  <!-- base_link -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="6.9267945770439E-06 -3.96574693306562E-06 0.00395606136220966"  rpy="0 0 3.14159265358979" />
+      <mass value="0.720167465924811" />
+      <inertia  ixx="0.00615545372950328" ixy="-4.87237789358096E-07" ixz="-2.97755475510978E-08"
+                iyy="0.00612747058646997" iyz="4.18370923899482E-09"
+                izz="0.0122752906926513" />
+    </inertial>
+  </link>
+
+  <!-- chassis_link -->
+  <link name="chassis_link">
+    <inertial>
+      <origin xyz="6.9267945770439E-06 -3.96574693306562E-06 0.00395606136220966" rpy="0 0 0" />
+      <mass value="0.72016746592481" />
+      <inertia  ixx="0.00615545372950328" ixy="-4.87237789358309E-07" ixz="2.97755475511005E-08"
+                iyy="0.00612747058646997" iyz="-4.18370923861834E-09"
+                izz="0.0122752906926513" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/chassis_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- base_link_joint -->
+  <joint  name="base_link_joint"  type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child  link="chassis_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- axle_link -->
+  <link name="axle_link">
+    <inertial>
+      <origin xyz="-6.92679457704216E-06 0.00395606136220966 -3.96574693306562E-06" rpy="0 0 0" />
+      <mass value="0.720167465924811" />
+      <inertia  ixx="0.00615545372950328" ixy="-2.97755475510977E-08" ixz="4.87237789358242E-07"
+                iyy="0.0122752906926513"  iyz="-4.18370923861933E-09"
+                izz="0.00612747058646997" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/axle_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/axle_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- axle_joint -->
+  <joint  name="axle_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="axle_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_a_whell_shaft_link -->
+  <link name="car_a_whell_shaft_link">
+    <inertial>
+      <origin xyz="1.3855E-10 -0.022254 8.3157E-10" rpy="0 0 0" />
+      <mass value="0.043953" />
+      <inertia  ixx="7.9726E-06"  ixy="2.8686E-14"  ixz="-1.401E-15"
+                iyy="1.3822E-05"  iyz="2.0711E-13"
+                izz="7.9726E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_shaft_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_shaft_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_a_whell_shaft_joint -->
+  <joint  name="car_a_whell_shaft_joint"  type="continuous">
+    <origin xyz="-0.079983 0.023 0.13854" rpy="1.0472 0 1.5708" />
+    <parent link="axle_link" />
+    <child  link="car_a_whell_shaft_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_a_whell_disc_link -->
+  <link name="car_a_whell_disc_link">
+    <inertial>
+      <origin xyz="-7.6413E-13 0 0.01395" rpy="0 0 0" />
+      <mass value="0.049359" />
+      <inertia  ixx="2.6026E-05"  ixy="3.4384E-19"  ixz="1.0392E-19"
+                iyy="2.6026E-05"  iyz="1.3941E-17"
+                izz="5.1939E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_disc_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.5 0.54 0.53 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_disc_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_a_whell_disc_joint -->
+  <joint  name="car_a_whell_disc_joint" type="fixed">
+    <origin xyz="0 0.00123301270189213 0" rpy="1.5707963267949 -0.0218660615255049 0" />
+    <parent link="car_a_whell_shaft_link" />
+    <child  link="car_a_whell_disc_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_a_whell_link -->
+  <link name="car_a_whell_link">
+    <inertial>
+      <origin xyz="-0.026052 0.037502 -2.0596E-07"  rpy="0 0 0" />
+      <mass value="0.072738" />
+      <inertia  ixx="3.5683E-06"  ixy="1.7836E-07"  ixz="3.1353E-12"
+                iyy="3.1941E-06"  iyz="1.1029E-12"
+                izz="3.1227E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_a_whell_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_a_whell_joint -->
+  <joint  name="car_a_whell_joint"  type="fixed">
+    <origin xyz="0.0385363128413261 0.0222489506297024 0.00369999999999965" rpy="-1.57079632679489 1.19004334631925 0.523598775952223" />
+    <parent link="car_a_whell_disc_link" />
+    <child  link="car_a_whell_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_b_whell_shaft_link -->
+  <link name="car_b_whell_shaft_link">
+    <inertial>
+      <origin xyz="-0.00043301 -0.036456 -0.00075"  rpy="0 0 0" />
+      <mass value="0.11582" />
+      <inertia  ixx="4.9326E-05"  ixy="2.0221E-13"  ixz="3.5105E-15"
+                iyy="1.5146E-05"  iyz="-4.7893E-14"
+                izz="4.9326E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_shaft_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_shaft_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_b_whell_shaft_joint -->
+  <joint  name="car_b_whell_shaft_joint"  type="continuous">
+    <origin xyz="-0.080175 0.02375 -0.13973"  rpy="-1.5708 0.5236 0" />
+    <parent link="axle_link" />
+    <child  link="car_b_whell_shaft_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_b_whell_disc_link -->
+  <link name="car_b_whell_disc_link">
+    <inertial>
+      <origin xyz="-3.8122E-13 6.6022E-13 -0.00655" rpy="0 0 0" />
+      <mass value="0.049359" />
+      <inertia  ixx="2.6026E-05"  ixy="5.5596E-16"  ixz="1.2099E-17"
+                iyy="2.6026E-05"  iyz="6.9914E-18"
+                izz="5.1939E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_disc_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.5 0.54 0.529 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_disc_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_b_whell_disc_joint -->
+  <joint  name="car_b_whell_disc_joint" type="fixed">
+    <origin xyz="-0.000433012701892471 -0.0203999999999999 -0.000749999999999876" rpy="-1.5707963267949 -0.50173271407281 -3.14159265358979" />
+    <parent link="car_b_whell_shaft_link" />
+    <child  link="car_b_whell_disc_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_b_whell_link -->
+  <link name="car_b_whell_link">
+    <inertial>
+      <origin xyz="-0.026052 0.037502 1.445E-07"  rpy="0 0 0" />
+      <mass value="0.072738" />
+      <inertia  ixx="3.5683E-06"  ixy="1.7838E-07"  ixz="-2.0619E-11"
+                iyy="3.1941E-06"  iyz="-1.7069E-11"
+                izz="3.1227E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_b_whell_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_b_whell_joint -->
+  <joint  name="car_b_whell_joint"  type="fixed">
+    <origin xyz="-0.0152191785170915 -0.0418143494125209 -0.0168000000000001" rpy="-1.5707963267949 1.19004334631925 -1.91986217683983" />
+    <parent link="car_b_whell_disc_link" />
+    <child  link="car_b_whell_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_c_whell_shaft_link -->
+  <link name="car_c_whell_shaft_link">
+    <inertial>
+      <origin xyz="3.6808E-11 -0.022253 -1.1285E-11"  rpy="0 0 0" />
+      <mass value="0.043954" />
+      <inertia  ixx="7.9726E-06"  ixy="1.0692E-14"  ixz="-1.6854E-17"
+                iyy="1.3822E-05"  iyz="-2.379E-15"
+                izz="7.9726E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_shaft_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_shaft_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_c_whell_shaft_joint -->
+  <joint  name="car_c_whell_shaft_joint"  type="continuous">
+    <origin xyz="0.15997 0.023 0" rpy="0 0 -1.5708" />
+    <parent link="axle_link" />
+    <child  link="car_c_whell_shaft_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_c_whell_disc_link -->
+  <link name="car_c_whell_disc_link">
+    <inertial>
+      <origin xyz="-7.6316E-13 5.5511E-17 0.01395"  rpy="0 0 0" />
+      <mass value="0.049359" />
+      <inertia  ixx="2.6026E-05"  ixy="3.3992E-19"  ixz="4.4017E-21"
+                iyy="2.6026E-05"  iyz="1.1988E-17"
+                izz="5.1939E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_disc_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.5 0.54 0.529 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_disc_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_c_whell_disc_joint -->
+  <joint  name="car_c_whell_disc_joint" type="fixed">
+    <origin xyz="0 0.00123301270189233 0" rpy="-1.5707963267949 0.0218660615255049 -3.14159265358979" />
+    <parent link="car_c_whell_shaft_link" />
+    <child  link="car_c_whell_disc_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- car_c_whell_link -->
+  <link name="car_c_whell_link">
+    <inertial>
+      <origin xyz="-0.026052 0.037502 -2.8755E-11"  rpy="0 0 0" />
+      <mass value="0.072739" />
+      <inertia  ixx="3.5684E-06"  ixy="1.7839E-07"  ixz="-2.5183E-14"
+                iyy="3.1942E-06"  iyz="-1.0492E-14"
+                izz="3.1228E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/car_c_whell_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- car_c_whell_joint -->
+  <joint  name="car_c_whell_joint"  type="fixed">
+    <origin xyz="0 -0.044497901203624 0.00369999999999981"  rpy="-1.5707963267949 1.19004334631925 -1.57079632644098" />
+    <parent link="car_c_whell_disc_link" />
+    <child  link="car_c_whell_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- imu_link -->
+  <link name="imu_link">
+    <inertial>
+      <origin xyz="-0.049446 -0.019177 0.0062665" rpy="0 0 0" />
+      <mass value="0.18529" />
+      <inertia  ixx="0.00015805"  ixy="-3.4913E-06" ixz="2.0531E-06"
+                iyy="0.0003484"
+                iyz="1.0145E-06"
+                izz="0.00050079" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/imu_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.027451 1 0.21961 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/imu_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- imu_joint -->
+  <joint  name="imu_joint"  type="fixed">
+    <origin xyz="-0.0593784805986412 0.0187236169610466 0.07" rpy="3.14159265358979 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="imu_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- side_cover_link -->
+  <link name="side_cover_link">
+    <inertial>
+      <origin xyz="-0.085611 -0.17171 0.080349" rpy="0 0 0" />
+      <mass value="0.34391" />
+      <inertia  ixx="0.0058573" ixy="5.3047E-07"  ixz="0.00014398"
+                iyy="0.0052489" iyz="1.6578E-05"
+                izz="0.009758" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/side_cover_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/side_cover_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- side_cover_joint -->
+  <joint  name="side_cover_joint" type="fixed">
+    <origin xyz="-0.0699999999999999 -0.172 0.005"  rpy="0.00367645402410964 0 3.14159265358974" />
+    <parent link="chassis_link" />
+    <child  link="side_cover_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- cover_link -->
+  <link name="cover_link">
+    <inertial>
+      <origin xyz="-6.9268E-06 0.0039561 -3.9657E-06" rpy="0 0 0" />
+      <mass value="0.72017" />
+      <inertia  ixx="0.0061555" ixy="-2.9776E-08" ixz="4.8724E-07"
+                iyy="0.012275"  iyz="-4.1837E-09"
+                izz="0.0061275" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/cover_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/cover_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- cover_link_joint -->
+  <joint  name="cover_link_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="cover_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- top_link -->
+  <link name="top_link">
+    <inertial>
+      <origin xyz="0.016184 0.0040409 0.00038438" rpy="0 0 0" />
+      <mass value="1.0783" />
+      <inertia  ixx="0.0080149" ixy="0.00010216"  ixz="-4.1524E-05"
+                iyy="0.014398"  iyz="6.0692E-07"
+                izz="0.0072524" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/top_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/top_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- top_joint -->
+  <joint  name="top_joint"  type="fixed">
+    <origin xyz="0 0 0.163" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="top_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- stop_link -->
+  <link name="stop_link">
+    <inertial>
+      <origin xyz="5.2424E-09 0.011181 -9.8443E-08" rpy="0 0 0" />
+      <mass value="0.01716" />
+      <inertia  ixx="2.821E-06" ixy="-1.3501E-11" ixz="8.4481E-12"
+                iyy="1.3428E-06"  iyz="9.3751E-12"
+                izz="2.8214E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/stop_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/stop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- stop_joint -->
+  <joint  name="stop_joint" type="continuous">
+    <origin xyz="0.112 0 -0.112"  rpy="0 0 0" />
+    <parent link="top_link" />
+    <child  link="stop_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- arm_link -->
+  <link name="arm_link">
+    <inertial>
+      <origin xyz="9.869E-05 0.0025014 5.5511E-17"  rpy="0 0 0" />
+      <mass value="0.14362" />
+      <inertia  ixx="0.00034412"  ixy="6.1399E-09"  ixz="-4.3666E-20"
+                iyy="0.00068799"  iyz="-2.0973E-23"
+                izz="0.00034447" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/arm_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- arm_joint -->
+  <joint  name="arm_joint"  type="fixed">
+    <origin xyz="-0.0819999999999999 0.00800000000000001 0" rpy="1.57 0 3.14" />
+    <parent link="top_link" />
+    <child  link="arm_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- column_link -->
+  <link name="column_link">
+    <inertial>
+      <origin xyz="-0.00061249 0.3124 7.8908E-05" rpy="0 0 0" />
+      <mass value="0.33717" />
+      <inertia  ixx="0.0020413" ixy="-3.5809E-07" ixz="1.5598E-06"
+                iyy="0.00021152"  iyz="-4.3224E-08"
+                izz="0.0021632" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/column_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/column_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- column_joint -->
+  <joint  name="column_joint" type="continuous">
+    <origin xyz="0.067 0.00800000000000001 0" rpy="3.14159265358979 -0.00834710068324721 3.14159265358979" />
+    <parent link="top_link" />
+    <child  link="column_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- display_link -->
+  <link name="display_link">
+    <inertial>
+      <origin xyz="-0.13889 0.098043 -0.00087847" rpy="0 0 0" />
+      <mass value="0.33332" />
+      <inertia  ixx="0.0034566" ixy="-1.6704E-07" ixz="2.0007E-18"
+                iyy="0.0024454" iyz="3.0146E-18"
+                izz="0.0010125" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/display_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/display_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- diasply_joint -->
+  <joint  name="diasply_joint"  type="continuous">
+    <origin xyz="0 0.135126352666876 0" rpy="0.00721623118507111 0.0153880227330161 -0.0161355531628842" />
+    <parent link="column_link" />
+    <child  link="display_link" />
+    <axis xyz="0.016132942748855 -0.999841999707743 0.007463496411441" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- 3d_camera_link -->
+  <link name="3d_camera_link">
+    <inertial>
+      <origin xyz="0.00061445 -0.12634 0.012091"  rpy="0 0 0" />
+      <mass value="0.02092" />
+      <inertia  ixx="2.6724E-06"  ixy="-8.0538E-09" ixz="1.8982E-09"
+                iyy="1.4173E-05"  iyz="-1.7035E-08"
+                izz="1.402E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/3d_camera_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/3d_camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 3d_camera_joint -->
+  <joint  name="3d_camera_joint"  type="continuous">
+    <origin xyz="0 0.398403338922591 0" rpy="1.57079632679485 1.5590546713036 -3.14159265358979" />
+    <parent link="column_link" />
+    <child  link="3d_camera_link" />
+    <axis xyz="0 0 1" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- microphone_link -->
+  <link name="microphone_link">
+    <inertial>
+      <origin xyz="-1.1043E-09 0.0057654 8.0948E-05"  rpy="0 0 0" />
+      <mass value="0.036028" />
+      <inertia  ixx="9.2613E-06"  ixy="4.9836E-14"  ixz="9.1797E-13"
+                iyy="1.7511E-05"  iyz="6.4086E-09"
+                izz="9.154E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/microphone_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/microphone_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- microphone_joint -->
+  <joint  name="microphone_joint" type="continuous">
+    <origin xyz="0 0.49022 0" rpy="3.14159265358979 1.42594897330677 3.14159265358979" />
+    <parent link="column_link" />
+    <child  link="microphone_link" />
+    <axis xyz="0 1 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- ultrasonic_link -->
+  <link name="ultrasonic_link">
+    <inertial>
+      <origin xyz="-6.9268E-06 0.0039561 -3.9657E-06" rpy="0 0 0" />
+      <mass value="0.72017" />
+      <inertia  ixx="0.0061555" ixy="-2.9776E-08" ixz="4.8724E-07"
+                iyy="0.012275"  iyz="-4.1837E-09"
+                izz="0.0061275" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/ultrasonic_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/ultrasonic_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ultrasonic_joint -->
+  <joint  name="ultrasonic_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="ultrasonic_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- left_ultrasonic_link -->
+  <link name="left_ultrasonic_link">
+    <inertial>
+      <origin xyz="-0.00082 -0.01438 -0.018993" rpy="0 0 0" />
+      <mass value="0.0094089" />
+      <inertia  ixx="1.9041E-06"  ixy="-9.0204E-11" ixz="5.1791E-10"
+                iyy="3.333E-07" iyz="1.3271E-08"
+                izz="1.968E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/left_ultrasonic_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/left_ultrasonic_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- left_ultrasonic_joint -->
+  <joint  name="left_ultrasonic_joint"  type="continuous">
+    <origin xyz="-0.144199999999999 0.0617599999999949 -0.069999999999998"  rpy="0 1.5707963267949 0" />
+    <parent link="ultrasonic_link" />
+    <child  link="left_ultrasonic_link" />
+    <axis xyz="0 0 1" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- right_ultrasonic_link -->
+  <link name="right_ultrasonic_link">
+    <inertial>
+      <origin xyz="0.00086915 -0.014685 -0.018993"  rpy="0 0 0" />
+      <mass value="0.0094089" />
+      <inertia  ixx="1.9041E-06"  ixy="-9.0204E-11" ixz="-5.11E-10"
+                iyy="3.333E-07" iyz="3.7212E-08"
+                izz="1.968E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/right_ultrasonic_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/right_ultrasonic_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- right_ultrasonic_joint -->
+  <joint  name="right_ultrasonic_joint" type="continuous">
+    <origin xyz="-0.144699999999997 0.0617599999999916 0.0700000000000024"  rpy="0 1.5707963267949 0" />
+    <parent link="ultrasonic_link" />
+    <child  link="right_ultrasonic_link" />
+    <axis xyz="0 0 1" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- Anti_drop_sensor_link -->
+  <link name="Anti_drop_sensor_link">
+    <inertial>
+      <origin xyz="-6.92679457704043E-06 0.00395606136220966 -3.96574693312113E-06" rpy="0 0 0" />
+      <mass value="0.720167465924811" />
+      <inertia  ixx="0.00615545372950328" ixy="-2.97755475510994E-08" ixz="4.87237789358066E-07"
+                iyy="0.0122752906926513"  iyz="-4.18370923862105E-09"
+                izz="0.00612747058646997" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Anti_drop_sensor_joint -->
+  <joint  name="Anti_drop_sensor_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="Anti_drop_sensor_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- Anti_drop_sensor_a_link -->
+  <link name="Anti_drop_sensor_a_link">
+    <inertial>
+      <origin xyz="0.00085536 1.2022E-05 -0.0033404"  rpy="0 0 0" />
+      <mass value="0.0021788" />
+      <inertia  ixx="5.7895E-08"  ixy="-1.7826E-11" ixz="-2.1808E-09"
+                iyy="9.0808E-08"  iyz="7.171E-11"
+                izz="1.3121E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_a_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.22353 0.22353 0.22353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_a_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Anti_drop_sensor_a_joint -->
+  <joint  name="Anti_drop_sensor_a_joint" type="fixed">
+    <origin xyz="-0.159 0 0"  rpy="-1.5707963267949 0 0" />
+    <parent link="Anti_drop_sensor_link" />
+    <child  link="Anti_drop_sensor_a_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- Anti_drop_sensor_b_link -->
+  <link name="Anti_drop_sensor_b_link">
+    <inertial>
+      <origin xyz="0.00085536 1.2022E-05 -0.0033404"  rpy="0 0 0" />
+      <mass value="0.0021788" />
+      <inertia  ixx="5.7895E-08"  ixy="-1.7823E-11" ixz="-2.1808E-09"
+                iyy="9.0808E-08"  iyz="7.171E-11"
+                izz="1.3121E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_b_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.22353 0.22353 0.22353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_b_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Anti_drop_sensor_b_joint -->
+  <joint  name="Anti_drop_sensor_b_joint" type="fixed">
+    <origin xyz="0.0795000000000006 0 0.137698039201725"  rpy="1.5707963267949 1.0471975511966 3.14159265358979" />
+    <parent link="Anti_drop_sensor_link" />
+    <child  link="Anti_drop_sensor_b_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- Anti_drop_sensor_c_link -->
+  <link name="Anti_drop_sensor_c_link">
+    <inertial>
+      <origin xyz="0.00085536 1.2023E-05 -0.0033404"  rpy="0 0 0" />
+      <mass value="0.0021788" />
+      <inertia  ixx="5.7895E-08"  ixy="-1.7829E-11" ixz="-2.1808E-09" 
+                iyy="9.0808E-08"  iyz="7.1711E-11"
+                izz="1.3121E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_c_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.22353 0.22353 0.22353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_drop_sensor_c_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Anti_drop_sensor_c_joint -->
+  <joint  name="Anti_drop_sensor_c_joint" type="fixed">
+    <origin xyz="0.0794999999999987 0 -0.137698039201726" rpy="1.5707963267949 -1.04719755119661 3.14159265358979" />
+    <parent link="Anti_drop_sensor_link" />
+    <child  link="Anti_drop_sensor_c_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- Anti_collision_sensor_link -->
+  <link name="Anti_collision_sensor_link">
+    <inertial>
+      <origin xyz="1.3704E-16 0.0025 -1.6653E-16" rpy="0 0 0" />
+      <mass value="0.40718" />
+      <inertia  ixx="0.0081304" ixy="-5.5454E-20" ixz="-5.2113E-18"
+                iyy="0.016189"  iyz="-1.6544E-21"
+                izz="0.0081304" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_collision_sensor_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/Anti_collision_sensor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Anti_collision_sensor_joint -->
+  <joint  name="Anti_collision_sensor_joint"  type="fixed">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="Anti_collision_sensor_link" />
+    <axis xyz="0 0 0" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+
+  <!-- lidar_link -->
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="0 -5.5511E-17 0.0086962" rpy="0 0 0" />
+      <mass value="0.16656" />
+      <inertia  ixx="7.8909E-05"  ixy="0" ixz="-4.6889E-22"
+                iyy="7.8909E-05"  iyz="0"
+                izz="0.00011272" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/lidar_link.STL" />
+      </geometry>
+      <material name="">
+        <color  rgba="0.3098 0.3098 0.3098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://castlex_description/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- lidar_joint -->
+  <joint  name="lidar_joint"  type="continuous">
+    <origin xyz="0.13125 0 0.135" rpy="0 3.14159265358979 3.14159265358979" />
+    <parent link="chassis_link" />
+    <child  link="lidar_link" />
+    <axis xyz="0 0 1" />
+    <safety_controller  k_velocity="0" />
+  </joint>
+  
+</robot>

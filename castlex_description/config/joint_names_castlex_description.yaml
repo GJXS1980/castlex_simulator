@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'stop_joint', 'column_joint', 'diasply_joint', '3d_camera_joint', 'microphone_joint', 'left_ultrasonic_joint', 'right_ultrasonic_joint', ]
